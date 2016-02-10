@@ -24,7 +24,7 @@
         $job = new Job($_POST['title'], new Company($_POST['name'], $_POST['phone']));
         // $company = $job->getCompany();
         // $company_name = $company->getName();
-        $place->save();
+        $job->save();
         return $app['twig']->render('add_job.html.twig', array('newjob' => $job));
     });
 
