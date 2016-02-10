@@ -21,14 +21,14 @@
     });
 
     $app->post("/jobs", function() use ($app) {
-        $job = new Job($_POST['title'], new Company($_POST['name'], $_POST['phone']));
+        $job = new Job($_POST['title'], $_POST['job_resp'], new Company($_POST['name'], $_POST['phone'], new Address($_POST['street'], $_POST['city'], $_POST['state'], $_POST['zip'])));
         // $company = $job->getCompany();
         // $company_name = $company->getName();
         $job->save();
         return $app['twig']->render('add_job.html.twig', array('newjob' => $job));
     });
 
-    $app->post("/delete_jobs.html.twig", function() use($app) {
+    $app->post("/delete_jobs", function() use($app) {
         Job::deleteAll();
         return $app['twig']->render('delete_jobs.html.twig');
     });

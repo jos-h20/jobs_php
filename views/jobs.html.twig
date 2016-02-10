@@ -10,20 +10,37 @@
         <ul>
             {% for job in jobs %}
             {% set company = job.getCompany %}
-                <li> {{ job.getTitle }} </li>
-                <li> {{ company.getName }}</li>
-                <li> {{ company.getPhone }}</li>
+            {% set address = company.getAddress %}
+                <h2> {{ job.getTitle }} </h2>
+                <li>Responsibilities: {{ job.getJobResp }}</li>
+                <li>Company Name: {{ company.getName }}</li>
+                <li>Phone: {{ company.getPhone }}</li>
+                <li>Street: {{ address.getStreet }}</li>
+                <li>City: {{ address.getCity }}</li>
+                <li>State: {{ address.getState }}</li>
+                <li>Zip: {{ address.getZip }}</li>
             {% endfor %}
         </ul>
     {% endif %}
 
     <form action='/jobs' method='post'>
         <label for='title'>Title of Job:</label>
-        <input id='title' name='title' type='text'>
+        <input id='title' name='title' type='text'></br>
+        <label for='job_resp'>Job Responsibilities:</label>
+        <input id='job_resp' name='job_resp' type='text'></br>
+
         <label for='name'>Company Name:</label>
-        <input id='name' name='name' type='text'>
+        <input id='name' name='name' type='text'></br>
         <label for='phone'>Phone of Job:</label>
-        <input id='phone' name='phone' type='text'>
+        <input id='phone' name='phone' type='text'></br>
+        <label for='street'>Street:</label>
+        <input id='street' name='street' type='text'></br>
+        <label for='city'>City:</label>
+        <input id='city' name='city' type='text'></br>
+        <label for='state'>State:</label>
+        <input id='state' name='state' type='text'></br>
+        <label for='zip'>Zip:</label>
+        <input id='zip' name='zip' type='text'></br>
 
         <button type='submit'>Add Job</button>
     </form>
