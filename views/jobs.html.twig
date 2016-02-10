@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Jobs Held</title>
+</head>
+<body>
+    <h1>My Previous Jobs</h1>
+
+    {% if jobs is not empty %}
+        <p>Here is Where I've Worked:</p>
+        <ul>
+            {% for job in jobs %}
+            {% set company = job.getCompany %}
+                <li> {{ job.getTitle }} </li>
+                <li> {{ company.getName }}</li>
+                <li> {{ company.getPhone }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/jobs' method='post'>
+        <label for='title'>Title of Job:</label>
+        <input id='title' name='title' type='text'>
+
+        <button type='submit'>Add Job</button>
+    </form>
+    <form action='/delete_jobs' method='post'>
+        <button type='submit'>Clear</button>
+    </form>
+</body>
+</html>
